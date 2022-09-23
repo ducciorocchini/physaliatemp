@@ -1,4 +1,7 @@
+#install.packages("RStoolbox")
+
 library(raster)
+library(RStoolbox)
 
 # Set the working directory
 setwd("~/lab/") # Linux 
@@ -6,7 +9,7 @@ setwd("~/lab/") # Linux
 # setwd("/Users/name/lab/") # mac
 
 l1992 <- brick("defor1.jpg")
-l2006 <- brick("defor2.jpg")
+l2006 <- brick("defor2.jpg") # check if the extension is correct
 
 # layer1 = nir (Red channel of RGB)
 # layer2 = red
@@ -33,3 +36,13 @@ dvidif <- dvi1992 - dvi2006 # the higher the value the higher the difference
 
 cld <- colorRampPalette(c('blue','white','red'))(100) 
 plot(dvidif, col=cld)
+
+######
+
+si2006 <- spectralIndices(l2006, green=3, red=2, nir=1)
+
+cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100) # specifying a color scheme
+
+
+
+
